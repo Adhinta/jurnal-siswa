@@ -123,20 +123,16 @@
       <ul class="sidebar-menu" data-widget="tree" >
         <li class="header">MAIN NAVIGATION</li>
         <li class="active treeview">
-          @if (auth::user()->jabatan == 'ADMIN' && auth::user()->hakAk == 'FULL' )
+          @if (auth::user()->jabatan == 'USERS' || auth::user()->jabatan == 'ADMIN')
               <li @yield('statusAktif')><a href="{{url('/admin')}}"><i class="fa fa-database"></i> Dashboard</a></li>
               <li @yield('statusAktif')><a href="{{url('/admin/daftarlomba')}}"><i class="fa fa-database"></i> Data Guru</a></li>
               <li @yield('statusAktif')><a href="{{url('/admin/prestasisiswa')}}"><i class="fa fa-user"></i> Jadwal Kegiatan</a></li>
-          @elseif (auth::user()->jabatan == 'PIMPINAN' )
-              <li @yield('statusAktif')><a href="{{url('/admin/peserta')}}"><i class="fa fa-circle-o"></i> Bahan Abis Pakai</a></li>
-              <li @yield('statusAktif')><a href="{{url('/admin/asettkj')}}"><i class="fa fa-circle-o"></i> Aset</a></li>
-              <li @yield('statusAktif')><a href="{{url('/admin/peserta')}}"><i class="fa fa-circle-o"></i> Kapitalisasi Aset</a></li>
           @endif
         </li>
 
       <li class="header">Pengaturan Pengguna</li>
       <li class="active treeview">
-          @if (auth::user()->jabatan == 'ADMIN' && auth::user()->hakAk == 'FULL' )
+          @if (auth::user()->jabatan == 'ADMIN')
           <li @yield('statusAktif')><a href="{{url('/admin/pengguna')}}"><i class="fa fa-gears"></i> <span> Users</span></li>
             <span class="pull-right-container">
             </span>
