@@ -29,7 +29,7 @@ class prestasisiswaCont extends Controller
     {
         $prestasisiswa = DB::table('prestasi_siswa')->get();
 
-        return view('prestasisiswa')
+        return view('prestasi_siswa')
             ->with('prestasisiswa', $prestasisiswa)
             ->with('msg', $msg)
             ->with('act', 'viewprestasisiswa');
@@ -47,7 +47,7 @@ class prestasisiswaCont extends Controller
         $prestasisiswa = DB::table('prestasi_siswa')
         ->where('id_jurnal', '=', $id_jurnal)->first();
 
-        return view('prestasisiswa')
+        return view('prestasi_siswa')
         ->with('prestasisiswa', $prestasisiswa)
         ->with('act', 'viewEditprestasisiswa');
     }
@@ -57,7 +57,7 @@ class prestasisiswaCont extends Controller
         $prestasisiswa = DB::table('prestasi_siswa')
         ->where('id_jurnal', '=', $id_jurnal)->first();
 
-        return view('prestasisiswa')
+        return view('prestasi_siswa')
         ->with('prestasisiswa', $prestasisiswa)
         ->with('act', 'viewDetailprestasisiswa');
     }
@@ -69,7 +69,7 @@ class prestasisiswaCont extends Controller
 
         $prestasisiswa_del = DB::table('prestasi_siswa')->where('id_jurnal', '=', $id_jurnal)->first();
 
-        return view('prestasisiswa')
+        return view('prestasi_siswa')
         ->with('prestasisiswa', $prestasisiswa)
         ->with('prestasisiswa_del', $prestasisiswa_del)
         ->with('act', 'viewDeleteprestasisiswa');
