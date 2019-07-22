@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class prestasisiswaCont extends Controller
 {
@@ -14,18 +15,19 @@ class prestasisiswaCont extends Controller
     }
     public function viewprestasisiswa()
     {
-        $prestasisiswa = DB::table('prestasi_siswa')
+        $prestasi_siswa = DB::table('prestasi_siswa')
         ->get();
 
-        return view('prestasisiswa')
-            ->with('prestasisiswa', $prestasisiswa)
-            ->with('act', 'viewprestasisiswa');
+        // dd(Auth::user());
+        return view('prestasi_siswa', [
+            'prestasi_siswa'=>$prestasi_siswa,
+            'act'=>'prestasi_siswa'
+        ]);
     }
 
     public function viewprestasisiswaWithMsg($msg)
     {
-        $prestasisiswa = DB::table('prestasi_siswa')
-        ->get();
+        $prestasisiswa = DB::table('prestasi_siswa')->get();
 
         return view('prestasisiswa')
             ->with('prestasisiswa', $prestasisiswa)

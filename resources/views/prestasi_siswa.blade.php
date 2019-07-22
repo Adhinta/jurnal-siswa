@@ -53,7 +53,6 @@
 
 
 @section('maincontent')
-
   @if($act=="viewTambahprestasisiswa")
   	<div class="row">
   	<div class="col-md-12">
@@ -125,38 +124,38 @@
                 <!-- /.box-header -->
                 <!-- form start -->
 
+                
                 <form class="form-horizontal" enctype="multipart/form-data" action="{{ asset('admin/prestasisiswa/prosesEditprestasisiswa') }}" method="post">
                   {!! csrf_field() !!}
                   <div class="box-body">
-                    
                     <div class="form-group">
                       <label for="id_guru" class="col-sm-2 control-label">Id Guru</label>
                       <div class="col-sm-8">
-                        <input disabled="" type="text" class="form-control" id="id_guru" name="id_guru" value="{{ $prestasisiswa->id_guru }}">
+                        <input disabled="" type="text" class="form-control" id="id_guru" name="id_guru" value="{{ $prestasi_siswa->id_guru }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="nama_guru" class="col-sm-2 control-label">Nama Guru</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nama_guru" name="nama_guru" value="{{ $prestasisiswa->nama_guru }}">
+                        <input type="text" class="form-control" id="nama_guru" name="nama_guru" value="{{ $prestasi_siswa->nama_guru }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="hari" class="col-sm-2 control-label">Hari</label>
                       <div class="col-sm-8">
-                        <input disabled="" type="text" class="form-control" id="hari" name="hari" value="{{ $prestasisiswa->hari }}">
+                        <input disabled="" type="text" class="form-control" id="hari" name="hari" value="{{ $prestasi_siswa->hari }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
                       <div class="col-sm-8">
-                        <input disabled="" type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $prestasisiswa->tanggal }}">
+                        <input disabled="" type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $prestasi_siswa->tanggal }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="agenda" class="col-sm-2 control-label">Agenda</label>
                       <div class="col-sm-8">
-                        <input disabled="" type="text" class="form-control" id="agenda" name="agenda" value="{{ $prestasisiswa->agenda }}">
+                        <input disabled="" type="text" class="form-control" id="agenda" name="agenda" value="{{ $prestasi_siswa->agenda }}">
                       </div>
                     </div>
                     <div class="form-group">
@@ -194,38 +193,38 @@
                     <div class="form-group">
                       <label for="id_jurnal" class="col-sm-2 control-label">Id Jurnal</label>
                       <div class="col-sm-8">
-                        <input disabled="" type="text" class="form-control" id="id_jurnal" name="id_jurnal" value="{{ $prestasisiswa->id_jurnal }}">
-                        <input type="hidden" class="form-control" id="id_jurnal" name="id_jurnal" value="{{ $prestasisiswa->id_jurnal }}">
+                        <input disabled="" type="text" class="form-control" id="id_jurnal" name="id_jurnal" value="{{ $prestasi_siswa->id_jurnal }}">
+                        <input type="hidden" class="form-control" id="id_jurnal" name="id_jurnal" value="{{ $prestasi_siswa->id_jurnal }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="id_guru" class="col-sm-2 control-label">Id Guru</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="id_guru" name="id_guru" value="{{ $prestasisiswa->id_guru }}">
+                        <input type="text" class="form-control" id="id_guru" name="id_guru" value="{{ $prestasi_siswa->id_guru }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="nama_guru" class="col-sm-2 control-label">Nama Guru</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nama_guru" name="nama_guru" value="{{ $prestasisiswa->nama_guru }}">
+                        <input type="text" class="form-control" id="nama_guru" name="nama_guru" value="{{ $prestasi_siswa->nama_guru }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="hari" class="col-sm-2 control-label">Hari</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="hari" name="hari" value="{{ $prestasisiswa->hari }}">
+                        <input type="text" class="form-control" id="hari" name="hari" value="{{ $prestasi_siswa->hari }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
                       <div class="col-sm-8">
-                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $prestasisiswa->tanggal }}">
+                        <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ $prestasi_siswa->tanggal }}">
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="agenda" class="col-sm-2 control-label">Agenda</label>
                       <div class="col-sm-8">
-                        <input type="text" class="form-control" id="agenda" name="agenda" value="{{ $prestasisiswa->agenda }}">
+                        <input type="text" class="form-control" id="agenda" name="agenda" value="{{ $prestasi_siswa->agenda }}">
                       </div>
                     </div>
                     <div class="form-group">
@@ -247,7 +246,7 @@
     </div>
   @endif
 
-  @if($act=="viewprestasisiswa" || $act=="viewDeleteprestasisiswa")
+  @if($act=="prestasi_siswa" || $act=="viewDeleteprestasisiswa")
 
   
     @if (isset($msg))
@@ -261,7 +260,7 @@
           <h4><i class="icon fa fa-warning"></i> Info!</h4>
           Hapus Jurnal ?
             <a href="{{ asset('/admin/prestasisiswa') }}" class="btn-sm btn-primary">Cancel</a>
-            <a href="{{ url('/admin/prestasisiswa/prosesDeleteprestasisiswa',$prestasisiswa_del->id_jurnal) }}" class="btn-sm btn-danger">Hapus</a>
+            <a href="{{ url('/admin/prestasisiswa/prosesDeleteprestasisiswa',$prestasi_siswa_del->id_jurnal) }}" class="btn-sm btn-danger">Hapus</a>
         </div>
 
     @endif
@@ -270,8 +269,8 @@
   		<div class="box box-info">
   	            <div class="box-header with-border">
   	              <h3 class="box-title">Jurnal</h3>
-                  @if (auth::user()->jabatan == 'ADMIN')
-                  <a href="{{ asset('admin/prestasisiswa/viewTambahprestasisiswa') }}" class="btn btn-info pull-right">Tambah</a>
+                  @if (auth::user()->jabatan == 'USERS')
+                    <a href="{{ asset('admin/prestasisiswa/viewTambahprestasisiswa') }}" class="btn btn-info pull-right">Tambah</a>
   	              @else
                   @endif
                 </div>
@@ -297,7 +296,7 @@
                       $i = 1;
                     @endphp
 
-                  @foreach ($prestasisiswa as $a)
+                  @foreach ($prestasi_siswa as $a)
                       <tr>
                       <td>{{ $i }}</td>
                       <td>{{ $a->hari }}</td>
@@ -308,13 +307,13 @@
                       <td>
                           <a href="{{asset($a->jurnal)}}" target="_blank">Preview PDF : {{$a->jurnal_name}}</a>
                       </td>
-                      @if (auth::user()->jabatan == 'ADMIN')
+                      @if (auth::user()->jabatan == 'USERS')
                       <td>
                         <a href="{{ url('admin/prestasisiswa/viewDetailprestasisiswa',$a->id_jurnal) }}" class="btn-sm btn-primary "><i class="fa fa-info-circle"></i> Detail</a> <br><br>
                         <a href="{{ url('admin/prestasisiswa/viewEditprestasisiswa',$a->id_jurnal) }}" class="btn-sm btn-warning "><i class="fa fa-pencil-square-o"></i> Edit</a> <br><br>
                         <a href="{{ url('admin/prestasisiswa/viewDeleteprestasisiswa',$a->id_jurnal) }}" class="btn-sm btn-danger "><i class="fa fa-trash"></i> Hapus</a> <br>  <br>
                       </td>
-                      @elseif (auth::user()->jabatan == 'ADMIN')
+                      @elseif (auth::user()->jabatan == 'USERS')
                       <td>
                         <a href="{{ url('admin/prestasisiswa/viewDetailprestasisiswa',$a->id_jurnal) }}" class="btn-sm btn-primary ">Detail</a> <br><br>
                       </td>
