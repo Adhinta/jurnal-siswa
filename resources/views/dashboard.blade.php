@@ -1,12 +1,12 @@
 @extends('template.admin')
 
 @section('title')
-  Dashborad
+  Dashboard
 @endsection
 
 
 @section('judulmenu')
-  Dashborad
+  Dashboard
 @endsection
 
 @section('statusAktif')
