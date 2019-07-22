@@ -5,75 +5,77 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
 // Test aja deh
 class prestasisiswaCont extends Controller
 {
-    public function previewPDF(){
+    public function previewPDF()
+    {
         // file_get_contents(asset)
     }
-    public function viewprestasisiswa(){
-        
+    public function viewprestasisiswa()
+    {
         $prestasisiswa = DB::table('prestasi_siswa')
         ->get();
 
-            return view('prestasisiswa')
-            ->with('prestasisiswa',$prestasisiswa)
-            ->with('act','viewprestasisiswa');
-       
+        return view('prestasisiswa')
+            ->with('prestasisiswa', $prestasisiswa)
+            ->with('act', 'viewprestasisiswa');
     }
 
-     public function viewprestasisiswaWithMsg($msg){
-        
+    public function viewprestasisiswaWithMsg($msg)
+    {
         $prestasisiswa = DB::table('prestasi_siswa')
         ->get();
 
-            return view('prestasisiswa')
-            ->with('prestasisiswa',$prestasisiswa)
-            ->with('msg',$msg)
-            ->with('act','viewprestasisiswa');
+        return view('prestasisiswa')
+            ->with('prestasisiswa', $prestasisiswa)
+            ->with('msg', $msg)
+            ->with('act', 'viewprestasisiswa');
     }
 
 
-     public function viewTambahprestasisiswa(){
+    public function viewTambahprestasisiswa()
+    {
         return view('prestasisiswa')
-        ->with('act','viewTambahprestasisiswa');
-        
+        ->with('act', 'viewTambahprestasisiswa');
+    }
 
-     }
-
-     public function viewEditprestasisiswa($id_jurnal){
-        
+    public function viewEditprestasisiswa($id_jurnal)
+    {
         $prestasisiswa = DB::table('prestasi_siswa')
-        ->where('id_jurnal','=',$id_jurnal)->first();
+        ->where('id_jurnal', '=', $id_jurnal)->first();
 
         return view('prestasisiswa')
-        ->with('prestasisiswa',$prestasisiswa)
-        ->with('act','viewEditprestasisiswa');
+        ->with('prestasisiswa', $prestasisiswa)
+        ->with('act', 'viewEditprestasisiswa');
     }
 
-    public function viewDetailprestasisiswa($id_jurnal){
-        
+    public function viewDetailprestasisiswa($id_jurnal)
+    {
         $prestasisiswa = DB::table('prestasi_siswa')
-        ->where('id_jurnal','=',$id_jurnal)->first();
+        ->where('id_jurnal', '=', $id_jurnal)->first();
 
         return view('prestasisiswa')
-        ->with('prestasisiswa',$prestasisiswa)
-        ->with('act','viewDetailprestasisiswa');
+        ->with('prestasisiswa', $prestasisiswa)
+        ->with('act', 'viewDetailprestasisiswa');
     }
 
-    public function viewDeleteprestasisiswa($id_jurnal){
+    public function viewDeleteprestasisiswa($id_jurnal)
+    {
         $prestasisiswa = DB::table('prestasi_siswa')
         ->get();
 
-        $prestasisiswa_del = DB::table('prestasi_siswa')->where('id_jurnal','=',$id_jurnal)->first();
+        $prestasisiswa_del = DB::table('prestasi_siswa')->where('id_jurnal', '=', $id_jurnal)->first();
 
         return view('prestasisiswa')
-        ->with('prestasisiswa',$prestasisiswa)
-        ->with('prestasisiswa_del',$prestasisiswa_del)
-        ->with('act','viewDeleteprestasisiswa');
+        ->with('prestasisiswa', $prestasisiswa)
+        ->with('prestasisiswa_del', $prestasisiswa_del)
+        ->with('act', 'viewDeleteprestasisiswa');
     }
 
-    public function prosesTambahprestasisiswa(Request $req){
+    public function prosesTambahprestasisiswa(Request $req)
+    {
         $id_jurnal = $req->id_jurnal;
         $nama_guru = $req->nama_guru;
         $id_guru = $req->id_guru;
@@ -83,24 +85,23 @@ class prestasisiswaCont extends Controller
 
         // dd($req->jurnal->getClientOriginalName());
 
-        if($req->hasFile('jurnal')){
+        if ($req->hasFile('jurnal')) {
             $req->file('jurnal');
             $upload = Storage::putFile('public/gambar', $req->file('jurnal'));
 
             $storage = 'storage/';
             $slash= '/';
-            $cacah = explode("/",$upload);
+            $cacah = explode("/", $upload);
             $jurnal = $storage.$cacah[1].$slash.$cacah[2];
-        }
-        else{
+        } else {
             $jurnal = 'user/img/noimage.png';
         }
         
         
         $tambahprestasisiswa = DB::table('prestasi_siswa')->insert(
             [
-                'id_jurnal' => $id_jurnal, 
-                'nama_guru' => $nama_guru, 
+                'id_jurnal' => $id_jurnal,
+                'nama_guru' => $nama_guru,
                 'id_guru' => $id_guru,
                 'hari' => $hari,
                 'tanggal' => $tanggal,
@@ -110,38 +111,38 @@ class prestasisiswaCont extends Controller
             ]
         );
 
-        if($tambahprestasisiswa){
+        if ($tambahprestasisiswa) {
             return redirect('admin/prestasisiswa/msg/1');
-        }else{
-            return redirect('admin/prestasisiswa/msg/2');;
+        } else {
+            return redirect('admin/prestasisiswa/msg/2');
+            ;
         }
-
     }
 
-    public function prosesEditprestasisiswa(Request $req){
+    public function prosesEditprestasisiswa(Request $req)
+    {
         $id_jurnal = $req->id_jurnal;
         $nama_guru = $req->nama_guru;
         $id_guru = $req->id_guru;
         $hari = $req->hari;
         $tanggal = $req->tanggal;
         $agenda = $req->agenda;
-        if($req->hasFile('jurnal')){
+        if ($req->hasFile('jurnal')) {
             $req->file('jurnal');
             $upload = Storage::putFile('public/prestasisiswa', $req->file('jurnal'));
 
             $storage = 'storage/';
             $slash= '/';
-            $cacah = explode("/",$upload);
+            $cacah = explode("/", $upload);
             $jurnal = $storage.$cacah[1].$slash.$cacah[2];
-        }
-        else{    
+        } else {
             $jurnal = 'user/img/noimage.png';
         }
         
         $editprestasisiswa = DB::table('prestasi_siswa')
-            ->where('id_jurnal','=',$id_jurnal)
+            ->where('id_jurnal', '=', $id_jurnal)
             ->update([
-            'nama_guru' => $nama_guru, 
+            'nama_guru' => $nama_guru,
             'id_guru' => $id_guru,
             'hari' => $hari,
             'tanggal' => $tanggal,
@@ -149,19 +150,18 @@ class prestasisiswaCont extends Controller
             'jurnal' => $jurnal,
                 ]);
 
-        if($editprestasisiswa){
+        if ($editprestasisiswa) {
             return redirect('/admin/prestasisiswa/msg/3');
-        }else{
+        } else {
             return redirect('/admin/prestasisiswa/msg/4');
         }
     }
 
 
-    public function prosesDeleteprestasisiswa($id_jurnal){
-
+    public function prosesDeleteprestasisiswa($id_jurnal)
+    {
         $del = DB::table('prestasi_siswa')->where('id_jurnal', '=', $id_jurnal)->delete();
 
         return redirect('admin/prestasisiswa/msg/5');
     }
-
 }
