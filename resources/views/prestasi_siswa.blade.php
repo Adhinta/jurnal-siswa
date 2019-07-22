@@ -288,7 +288,9 @@
                     <th>nama guru</th>
                     <th>Agenda</th>
                     <th>Jurnal</th>
-                    <th>Opsi</th>
+                    @if(auth::user()->jabatan == "USERS")
+                      <th>Opsi</th>
+                    @endif
                   </tr>
                   </thead>
                   <tbody>

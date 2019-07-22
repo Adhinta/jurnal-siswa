@@ -38,7 +38,7 @@ class prestasisiswaCont extends Controller
 
     public function viewTambahprestasisiswa()
     {
-        return view('prestasisiswa')
+        return view('prestasi_siswa')
         ->with('act', 'viewTambahprestasisiswa');
     }
 
